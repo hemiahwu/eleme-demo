@@ -96,11 +96,11 @@ export default {
       const data = {
         body: "米修在线",
         out_trade_no: new Date().getTime().toString(),
-        total_fee: 1
+        total_fee: 1000
       };
       // alert("进入到pay方法中");
       // 请求 http://www.thenewstep.cn/wxzf/example/jsapi.php
-      fetch("http://www.thenewstep.cn/wxzf/example/jsapi.php", {
+      fetch("https://www.thenewstep.cn/wxzf/example/jsapi.php", {
         method: "POST",
         headers: {
           "Content-type": "application/json"
@@ -132,13 +132,15 @@ export default {
         orderInfo: this.orderInfo,
         userInfo: this.userInfo,
         totalPrice: this.totalPrice,
-        remarkInfo: this.remarkInfo
+        remarkInfo: this.remarkInfo,
+        image_path: this.orderInfo.shopInfo.image_path,
+        shopInfoName: this.orderInfo.shopInfo.name,
+        selectFoodsName: this.orderInfo.selectFoods[0].name
       };
-      alert(JSON.stringify(orderlist));
+      // alert(JSON.stringify(orderlist));
       this.$axios
-        .post(`/api/user/add_order/${localStorage.ele_login}`, JSON.stringify(orderlist))
+        .post(`/api/user/add_order/${localStorage.ele_login}`, orderlist)
         .then(res => {
-          // alert(JSON.stringify(res.data));
           this.$router.push("/order");
         });
     }
