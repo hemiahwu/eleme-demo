@@ -14,8 +14,8 @@ Vue.prototype.$axios = axios;
 
 Vue.use(MintUI);
 
-// axios.defaults.baseURL = 'https://element-interface-09.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = 'https://element-interface-09.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:5000/';
 
 // 请求拦截
 axios.interceptors.request.use(
