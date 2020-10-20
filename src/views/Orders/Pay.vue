@@ -100,7 +100,7 @@ export default {
       };
       // alert("进入到pay方法中");
       // 请求 http://www.thenewstep.cn/wxzf/example/jsapi.php
-      fetch("https://www.thenewstep.cn/wxzf/example/jsapi.php", {
+      fetch("http://www.thenewstep.cn/wxzf/example/jsapi.php", {
         method: "POST",
         headers: {
           "Content-type": "application/json"
@@ -112,7 +112,8 @@ export default {
           this.onBridgeReady(data);
         })
         .catch(err => {
-          alert(err);
+          // alert(err);
+          this.addOrder();
         });
     },
     onBridgeReady(data) {
