@@ -133,11 +133,11 @@ export default {
         totalPrice: this.totalPrice,
         remarkInfo: this.remarkInfo
       };
-      // console.log(orderlist);
+      alert(orderlist);
       this.$axios
         .post(`/api/user/add_order/${localStorage.ele_login}`, orderlist)
         .then(res => {
-          // console.log(res.data);
+          alert(res.data);
           this.$router.push("/order");
         });
     }
