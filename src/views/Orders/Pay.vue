@@ -136,9 +136,9 @@ export default {
       };
       alert(JSON.stringify(orderlist));
       this.$axios
-        .post(`/api/user/add_order/${localStorage.ele_login}`, orderlist)
+        .post(`/api/user/add_order/${localStorage.ele_login}`, JSON.stringify(orderlist))
         .then(res => {
-          alert(JSON.stringify(res.data));
+          // alert(JSON.stringify(res.data));
           this.$router.push("/order");
         });
     }
