@@ -112,8 +112,8 @@ export default {
           this.onBridgeReady(data);
         })
         .catch(err => {
-          // alert(err);
-          this.addOrder();
+          alert(err);
+          // this.addOrder();
         });
     },
     onBridgeReady(data) {
