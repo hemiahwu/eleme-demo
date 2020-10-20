@@ -98,7 +98,7 @@ export default {
         out_trade_no: new Date().getTime().toString(),
         total_fee: 1
       };
-      alert("进入到pay方法中");
+      // alert("进入到pay方法中");
       // 请求 http://www.thenewstep.cn/wxzf/example/jsapi.php
       fetch("https://www.thenewstep.cn/wxzf/example/jsapi.php", {
         method: "POST",
@@ -133,11 +133,11 @@ export default {
         totalPrice: this.totalPrice,
         remarkInfo: this.remarkInfo
       };
-      alert(orderlist);
+      alert(JSON.stringify(orderlist));
       this.$axios
         .post(`/api/user/add_order/${localStorage.ele_login}`, orderlist)
         .then(res => {
-          alert(res.data);
+          alert(JSON.stringify(res.data));
           this.$router.push("/order");
         });
     }
