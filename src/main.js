@@ -16,6 +16,7 @@ Vue.use(MintUI);
 
 axios.defaults.baseURL = 'https://element-interface-october.herokuapp.com/';
 // axios.defaults.baseURL = 'http://localhost:5000/';
+// 数据迁移至高配服务器
 
 // 请求拦截
 axios.interceptors.request.use(
