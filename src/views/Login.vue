@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="logo">
-      <img src="../assets/logo.jpg" alt="my login image">
+      <img src="../assets/logo.jpg" alt="my login image" />
     </div>
     <!-- 手机号 -->
     <InputGroup
@@ -14,7 +14,12 @@
       @btnClick="getVerifyCode"
     />
     <!-- 验证码 -->
-    <InputGroup type="number" v-model="verifyCode" placeholder="验证码" :error="errors.code"/>
+    <InputGroup
+      type="number"
+      v-model="verifyCode"
+      placeholder="验证码"
+      :error="errors.code"
+    />
 
     <!-- 用户服务协议 -->
     <div class="login_des">
@@ -40,14 +45,14 @@ export default {
       verifyCode: "",
       errors: {},
       btnTitle: "获取验证码",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
     isClick() {
       if (!this.phone || !this.verifyCode) return true;
       else return false;
-    }
+    },
   },
   methods: {
     handleLogin() {
@@ -57,18 +62,18 @@ export default {
       this.$axios
         .post("/api/posts/sms_back", {
           phone: this.phone,
-          code: this.verifyCode
+          code: this.verifyCode,
         })
-        .then(res => {
+        .then((res) => {
           // console.log(res.data);
           // 检验成功 设置登录状态并且跳转到/
           localStorage.setItem("ele_login", res.data.user._id);
           this.$router.push("/");
         })
-        .catch(err => {
+        .catch((err) => {
           // 返回错误信息
           this.errors = {
-            code: err.response
+            code: err.response,
           };
         });
     },
@@ -78,12 +83,10 @@ export default {
         // 发送网络请求
         this.$axios
           .post("/api/posts/sms_send", {
-            tpl_id: "140481",
-            key: "795be723dd9e88c3ea98e2b6713ab795",
-            phone: this.phone
+            phone: this.phone,
           })
-          .then(res => {
-            console.log(res);
+          .then((res) => {
+            alert(res.data.msg);
           });
       }
     },
@@ -106,23 +109,23 @@ export default {
       // 验证手机号码
       if (!this.phone) {
         this.errors = {
-          phone: "手机号码不能为空"
+          phone: "手机号码不能为空",
         };
         return false;
       } else if (!/^1[345678]\d{9}$/.test(this.phone)) {
         this.errors = {
-          phone: "请填写正确的手机号码"
+          phone: "请填写正确的手机号码",
         };
         return false;
       } else {
         this.errors = {};
         return true;
       }
-    }
+    },
   },
   components: {
-    InputGroup
-  }
+    InputGroup,
+  },
 };
 </script>
 
