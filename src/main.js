@@ -14,7 +14,7 @@ Vue.prototype.$axios = axios;
 
 Vue.use(MintUI);
 
-axios.defaults.baseURL = 'https://c.iwanmen.com/element/';
+axios.defaults.baseURL = '请购买正版课程获取课程接口!';
 
 // 数据迁移至高配服务器
 
